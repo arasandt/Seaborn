@@ -224,5 +224,23 @@ sns.set(style="darkgrid", palette="bright") #style = {darkgrid, whitegrid, dark,
 # 
 # =============================================================================
 
+#lineplot
+
+rs = np.random.RandomState(365)
+values = rs.randn(365, 4).cumsum(axis=0) #adds previous row to current row
+dates = pd.date_range("1 1 2016", periods=365, freq="D")
+data = pd.DataFrame(values, dates, columns=["A", "B", "C", "D"])
+data = data.rolling(7).mean() #kind of moving average
+sns.lineplot(data=data, palette="tab10", linewidth=2.5)
+
+
+
+
+
+
+
+
+
+
 
 plt.show()
